@@ -524,6 +524,194 @@ body {
   color: var(--color-gray-400);
 }
 
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET (≤992px)
+   ══════════════════════════════════════ */
+@media (max-width: 992px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 20px;
+  }
+  .hero-split .stats-col {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .stat-box { padding: 20px 16px; }
+  .stat-box .number { font-size: var(--fs-2xl); }
+
+  .paths-tabs { padding: 60px 20px; }
+  .paths-tabs .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .path-detail {
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+  }
+  .path-detail .info-panel { padding: 32px; }
+  .path-detail .offers-panel { padding: 32px; }
+
+  .timeline-inline { padding: 60px 20px; }
+
+  .benefits-compact .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .benefits-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .practices-band { padding: 60px 20px; }
+  .practices-card { padding: 40px; gap: 40px; }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ── Hero ── */
+  .hero-split {
+    padding: 48px 20px;
+    gap: 32px;
+  }
+  .hero-split .text-col h2 {
+    font-size: var(--fs-2xl);
+    line-height: var(--lh-2xl);
+  }
+  .hero-split .text-col .btn-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-split .text-col .btn-row a {
+    text-align: center;
+  }
+  .hero-split .stats-col {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .stat-box { padding: 16px; }
+  .stat-box .number { font-size: var(--fs-xl); }
+  .stat-box .desc { font-size: var(--fs-xs); }
+
+  /* ── Paths / Tabs ── */
+  .paths-tabs { padding: 48px 16px; }
+  .paths-tabs .top h2 { font-size: var(--fs-md); font-weight: var(--fw-extrabold); }
+  .tab-bar { width: 100%; }
+  .tab-bar button { flex: 1; text-align: center; padding: 10px 16px; }
+
+  .path-detail {
+    grid-template-columns: 1fr;
+  }
+  .path-detail .info-panel {
+    padding: 28px 24px;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .path-detail .info-panel h3 {
+    font-size: var(--fs-lg);
+  }
+  .path-detail .info-panel .tags-list {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .path-detail .offers-panel {
+    padding: 24px;
+  }
+  .offer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .offer-row .offer-info h5 {
+    font-size: var(--fs-base);
+    line-height: var(--lh-lg);
+  }
+
+  /* ── Timeline ── */
+  .timeline-inline { padding: 48px 16px; }
+  .timeline-inline .header h2 { font-size: var(--fs-md); font-weight: var(--fw-extrabold); }
+  .process-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .process-step { text-align: left; display: flex; gap: 16px; padding: 0; align-items: flex-start; }
+  .process-step .dot { margin: 0; flex-shrink: 0; }
+  .process-step .text-wrap { text-align: left; }
+  /* Hide horizontal connector lines on mobile */
+  .process-step:not(:last-child)::after,
+  .process-step:not(:first-child)::before { display: none; }
+
+  .date-strip {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 20px 24px;
+  }
+  .date-strip span:nth-child(3) { display: none; } /* hide dot separator */
+
+  /* ── Benefits ── */
+  .benefits-compact { padding: 48px 16px; }
+  .benefits-compact .inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .benefits-list {
+    grid-template-columns: 1fr;
+  }
+  .b-item { border-right: none !important; }
+
+  /* ── Practices CTA ── */
+  .practices-band { padding: 48px 16px; }
+  .practices-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .practices-card .text-side p { max-width: none; }
+  .practices-card .cta-side { width: 100%; }
+  .practices-card .cta-side .btn-primary { width: 100%; text-align: center; }
+
+  /* ── Layout badge ── */
+  .layout-badge { font-size: 9px; padding: 6px 10px; }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤576px)
+   ══════════════════════════════════════ */
+@media (max-width: 576px) {
+  .hero-split .text-col h2 {
+    font-size: var(--fs-xl);
+    line-height: 32px;
+  }
+  .hero-split .text-col p {
+    font-size: var(--fs-base);
+    line-height: var(--lh-lg);
+  }
+  .hero-split .stats-col {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat-box .number { font-size: var(--fs-lg); }
+
+  .tab-bar button { font-size: var(--fs-sm); padding: 8px 12px; }
+
+  .path-detail .info-panel { padding: 24px 20px; }
+  .path-detail .info-panel h3 { font-size: var(--fs-md); }
+  .path-detail .info-panel p { font-size: var(--fs-sm); line-height: var(--lh-base); }
+  .path-detail .offers-panel { padding: 20px; }
+
+  .process-step .dot { width: 40px; height: 40px; }
+  .process-step .dot .material-icons { font-size: 18px; }
+
+  .benefits-compact .left h2 { font-size: var(--fs-md); }
+  .b-item { padding: 14px 12px; }
+  .b-item span { font-size: var(--fs-sm); }
+
+  .practices-card { padding: 24px 20px; }
+  .practices-card .text-side h2 { font-size: var(--fs-md); }
+}
+
 /* ── LAYOUT BADGE ── */
 .layout-badge {
   position: fixed;
@@ -664,18 +852,24 @@ body {
   <div class="process-row">
     <div class="process-step">
       <div class="dot"><span class="material-icons">send</span></div>
-      <h4>Aplikujesz</h4>
-      <p>Wyślij swoją aplikację i czekaj na kontakt.</p>
+      <div class="text-wrap">
+        <h4>Aplikujesz</h4>
+        <p>Wyślij swoją aplikację i czekaj na kontakt.</p>
+      </div>
     </div>
     <div class="process-step">
       <div class="dot"><span class="material-icons">groups</span></div>
-      <h4>Spotykasz się z nami</h4>
-      <p>W biurze lub zdalnie — poznajemy się wzajemnie.</p>
+      <div class="text-wrap">
+        <h4>Spotykasz się z nami</h4>
+        <p>W biurze lub zdalnie — poznajemy się wzajemnie.</p>
+      </div>
     </div>
     <div class="process-step">
       <div class="dot"><span class="material-icons">thumb_up</span></div>
-      <h4>Dostajesz decyzję</h4>
-      <p>Informujemy Cię o wyniku niezależnie od decyzji.</p>
+      <div class="text-wrap">
+        <h4>Dostajesz decyzję</h4>
+        <p>Informujemy Cię o wyniku niezależnie od decyzji.</p>
+      </div>
     </div>
   </div>
   <div class="date-strip">
