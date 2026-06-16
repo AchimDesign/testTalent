@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAGMA Talent Lab – Layout B (Modular)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ── */
+:root {
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-yellow-400: #FFB400;
+  --color-blue-400: #16A1D2;
+  --color-gray-900: #333333;
+  --color-gray-700: #515151;
+  --color-gray-600: #525252;
+  --color-gray-500: #666666;
+  --color-gray-400: #848484;
+  --color-gray-300: #3C3C3C;
+  --color-dark-bg: #2B2B2B;
+
+  --font-primary: 'Montserrat', sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --fs-xs: 10px;
+  --fs-sm: 12px;
+  --fs-base: 14px;
+  --fs-md: 16px;
+  --fs-lg: 22px;
+  --fs-xl: 24px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+
+  --lh-tight: 12px;
+  --lh-base: 20px;
+  --lh-relaxed: 22px;
+  --lh-lg: 26px;
+  --lh-xl: 28px;
+  --lh-2xl: 36px;
+
+  --radius-xs: 3px;
+  --radius-md: 15px;
+  --radius-pill: 25px;
+
+  --container-max: 1200px;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-md);
+  line-height: var(--lh-xl);
+  color: var(--color-gray-900);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════
+   SECTION 1: HERO — SPLIT LAYOUT
+   ══════════════════════════════════════ */
+.hero-split {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 60px;
+  align-items: center;
+  border-bottom: 1px solid #E0E0E0;
+}
+.hero-split .text-col .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-yellow-400);
+  background: rgba(255,180,0,0.08);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 24px;
+}
+.hero-split .text-col .label .material-icons { font-size: 14px; }
+.hero-split .text-col h2 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  line-height: 44px;
+  margin-bottom: 20px;
+}
+.hero-split .text-col h2 span { color: var(--color-yellow-400); }
+.hero-split .text-col p {
+  font-size: var(--fs-md);
+  line-height: var(--lh-xl);
+  color: var(--color-gray-700);
+  margin-bottom: 32px;
+}
+.hero-split .text-col .btn-row {
+  display: flex;
+  gap: 12px;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--color-yellow-400);
+  color: var(--color-gray-900);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  line-height: var(--lh-xl);
+  padding: 10px 32px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-yellow-400);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-secondary {
+  display: inline-block;
+  background: var(--color-white);
+  color: var(--color-gray-900);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  line-height: var(--lh-xl);
+  padding: 10px 32px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-gray-900);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero-split .stats-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.stat-box {
+  background: #F7F7F7;
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+.stat-box .number {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-xl);
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+.stat-box .number span { color: var(--color-yellow-400); }
+.stat-box .desc {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-base);
+  color: var(--color-gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ══════════════════════════════════════
+   SECTION 2: ŚCIEŻKI — TABS APPROACH
+   ══════════════════════════════════════ */
+.paths-tabs {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+.paths-tabs .top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.paths-tabs .top h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-relaxed);
+}
+.tab-bar {
+  display: inline-flex;
+  background: #F0F0F0;
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+.tab-bar button {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-relaxed);
+  padding: 8px 28px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-gray-500);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-bar button.active {
+  background: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+.path-detail {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 40px;
+  background: #FAFAFA;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.path-detail .info-panel {
+  background: var(--color-dark-bg);
+  padding: 40px;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.path-detail .info-panel .icon-circle {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,180,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.path-detail .info-panel .icon-circle .material-icons {
+  font-size: 24px;
+  color: var(--color-yellow-400);
+}
+.path-detail .info-panel h3 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-2xl);
+  margin-bottom: 16px;
+}
+.path-detail .info-panel p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-lg);
+  color: var(--color-gray-400);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.path-detail .info-panel .tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.path-detail .info-panel .tags-list .tag {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-gray-500);
+  color: var(--color-gray-400);
+}
+.path-detail .info-panel .tags-list .tag.filled {
+  background: var(--color-blue-400);
+  border-color: var(--color-blue-400);
+  color: var(--color-white);
+}
+
+/* Biznes panel color variant */
+.info-panel--biz {
+  background: var(--color-gray-900) !important;
+}
+.icon-circle--biz {
+  background: rgba(255,180,0,0.15) !important;
+}
+.tab-bar button.active-biz {
+  background: var(--color-yellow-400);
+  color: var(--color-gray-900);
+}
+
+.path-detail .offers-panel {
+  padding: 40px;
+}
+.path-detail .offers-panel h4 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-yellow-400);
+  margin-bottom: 24px;
+}
+.offer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.offer-row:last-child { border-bottom: none; }
+.offer-row .offer-info h5 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-xl);
+  margin-bottom: 4px;
+}
+.offer-row .offer-info span {
+  font-size: var(--fs-sm);
+  color: var(--color-gray-400);
+  line-height: var(--lh-base);
+}
+.offer-row .btn-link {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-gray-700);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.offer-row .btn-link .material-icons { font-size: 18px; }
+
+/* ══════════════════════════════════════
+   SECTION 3: TIMELINE — INLINE
+   ══════════════════════════════════════ */
+.timeline-inline {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 80px 20px;
+  border-top: 1px solid #E0E0E0;
+}
+.timeline-inline .header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.timeline-inline .header h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 8px;
+}
+.timeline-inline .header p {
+  font-size: var(--fs-md);
+  color: var(--color-gray-700);
+}
+
+.process-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.process-step {
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+}
+.process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 23px;
+  right: -1px;
+  width: 50%;
+  height: 2px;
+  background: var(--color-yellow-400);
+}
+.process-step:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 23px;
+  left: -1px;
+  width: 50%;
+  height: 2px;
+  background: var(--color-yellow-400);
+}
+.process-step .dot {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 3px solid var(--color-yellow-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  position: relative;
+  z-index: 1;
+}
+.process-step .dot .material-icons {
+  font-size: 22px;
+  color: var(--color-yellow-400);
+}
+.process-step h4 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 4px;
+}
+.process-step p {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+  color: var(--color-gray-700);
+}
+
+.date-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+  padding: 16px 32px;
+  background: rgba(255,180,0,0.06);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255,180,0,0.2);
+}
+.date-strip .material-icons { font-size: 24px; color: var(--color-yellow-400); }
+.date-strip strong {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+}
+.date-strip span {
+  font-size: var(--fs-sm);
+  color: var(--color-gray-700);
+}
+
+/* ══════════════════════════════════════
+   SECTION 4: BENEFITY — COMPACT LIST
+   ══════════════════════════════════════ */
+.benefits-compact {
+  background: var(--color-dark-bg);
+  padding: 80px 20px;
+}
+.benefits-compact .inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: start;
+}
+.benefits-compact .left h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-relaxed);
+  color: var(--color-white);
+  margin-bottom: 8px;
+}
+.benefits-compact .left p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-lg);
+  color: var(--color-gray-400);
+}
+.benefits-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.b-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--color-gray-300);
+}
+.b-item:nth-child(odd) { border-right: 1px solid var(--color-gray-300); }
+.b-item:nth-last-child(-n+2) { border-bottom: none; }
+.b-item .material-icons {
+  font-size: 18px;
+  color: var(--color-yellow-400);
+  flex-shrink: 0;
+}
+.b-item span {
+  font-size: var(--fs-base);
+  line-height: var(--lh-lg);
+  color: var(--color-white);
+}
+
+/* ══════════════════════════════════════
+   SECTION 5: PRAKTYKI — CTA BAND
+   ══════════════════════════════════════ */
+.practices-band {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+.practices-card {
+  background: #FAFAFA;
+  border-radius: var(--radius-md);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+}
+.practices-card .text-side .eyebrow {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-gray-400);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.practices-card .text-side h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 16px;
+}
+.practices-card .text-side h2 span { color: var(--color-yellow-400); }
+.practices-card .text-side p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-lg);
+  color: var(--color-gray-700);
+  max-width: 600px;
+}
+.practices-card .cta-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.practices-card .cta-side .btn-primary { white-space: nowrap; }
+.practices-card .cta-side .cta-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-gray-400);
+}
+
+/* ── LAYOUT BADGE ── */
+.layout-badge {
+  position: fixed;
+  top: 16px; left: 16px;
+  background: var(--color-gray-900);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: var(--fw-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 8px 16px;
+  border-radius: var(--radius-xs);
+  z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<div class="layout-badge">Layout B — Modular</div>
+
+<!-- ─── HERO SPLIT ─── -->
+<section class="hero-split">
+  <div class="text-col">
+    <div class="label"><span class="material-icons">bolt</span> Strefa praktyk i staży</div>
+    <h2>DAGMA <span>Talent Lab</span></h2>
+    <p>Nasz program stażowy został zaprojektowany tak, aby realnie przygotować Cię do pracy w IT — niezależnie od tego, czy bliżej Ci do kodu, czy do biznesu.</p>
+    <div class="btn-row">
+      <a href="#paths" class="btn-primary" onclick="setTimeout(()=>switchTab('it'),100)">Ścieżka IT</a>
+      <a href="#paths" class="btn-secondary" onclick="setTimeout(()=>switchTab('biz'),100)">Ścieżka Biznes</a>
+    </div>
+  </div>
+  <div class="stats-col">
+    <div class="stat-box">
+      <div class="number">3 <span>mies.</span></div>
+      <div class="desc">Czas trwania stażu</div>
+    </div>
+    <div class="stat-box">
+      <div class="number">2</div>
+      <div class="desc">Ścieżki kariery</div>
+    </div>
+    <div class="stat-box">
+      <div class="number">1:1</div>
+      <div class="desc">Wsparcie mentora</div>
+    </div>
+    <div class="stat-box">
+      <div class="number" style="font-size:24px;">lip–wrz</div>
+      <div class="desc">Okres stażu</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ŚCIEŻKI — TABS ─── -->
+<section class="paths-tabs" id="paths">
+  <div class="top">
+    <h2>Wybierz swoją ścieżkę kariery</h2>
+    <div class="tab-bar">
+      <button class="active" data-tab="it" onclick="switchTab('it')">IT</button>
+      <button data-tab="biz" onclick="switchTab('biz')">Biznes</button>
+    </div>
+  </div>
+
+  <!-- ── TAB: IT ── -->
+  <div class="path-detail tab-content" id="tab-it">
+    <div class="info-panel">
+      <div class="icon-circle"><span class="material-icons">terminal</span></div>
+      <h3>Ścieżka techniczna</h3>
+      <p>Dla osób, które chcą rozwijać kompetencje techniczne i pracować blisko systemów oraz użytkowników. Poznasz narzędzia i standardy pracy zespołów IT oraz nauczysz się rozwiązywać konkretne problemy technologiczne.</p>
+      <div class="tags-list">
+        <span class="tag filled">Dział Techniczny</span>
+      </div>
+    </div>
+    <div class="offers-panel">
+      <h4>Oferty w tej ścieżce</h4>
+      <div class="offer-row">
+        <div class="offer-info">
+          <h5>Płatny Staż w Zespole Wsparcia Technicznego</h5>
+          <span>Katowice · Dział Techniczny</span>
+        </div>
+        <a class="btn-link">Szczegóły <span class="material-icons">chevron_right</span></a>
+      </div>
+      <div class="offer-row">
+        <div class="offer-info">
+          <h5>Płatny staż w Zespole Technicznego Wsparcia Sprzedaży</h5>
+          <span>Katowice · Dział Techniczny</span>
+        </div>
+        <a class="btn-link">Szczegóły <span class="material-icons">chevron_right</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB: BIZNES ── -->
+  <div class="path-detail tab-content" id="tab-biz" style="display:none;">
+    <div class="info-panel info-panel--biz">
+      <div class="icon-circle icon-circle--biz"><span class="material-icons">trending_up</span></div>
+      <h3>Ścieżka biznesowa</h3>
+      <p>Dla tych, którzy widzą swoją przyszłość w zarządzaniu projektami, analizie biznesowej, szkoleniach, HR, sprzedaży lub marketingu w branży IT. Poznasz, jak łączyć potrzeby biznesu z możliwościami technologii.</p>
+      <div class="tags-list">
+        <span class="tag">Dział Marketingu</span>
+        <span class="tag">Dział Szkoleń IT</span>
+        <span class="tag">Dział Rozwoju Biznesu</span>
+        <span class="tag">Dział Organizacji</span>
+        <span class="tag">Dział Sprzedaży Detalicznej</span>
+      </div>
+    </div>
+    <div class="offers-panel">
+      <h4>Oferty w tej ścieżce</h4>
+      <div class="offer-row">
+        <div class="offer-info">
+          <h5>Płatny Staż w Dziale Marketingu</h5>
+          <span>Katowice · Dział Marketingu</span>
+        </div>
+        <a class="btn-link">Szczegóły <span class="material-icons">chevron_right</span></a>
+      </div>
+      <div class="offer-row">
+        <div class="offer-info">
+          <h5>Płatny Staż w Dziale Szkoleń IT</h5>
+          <span>Katowice · Dział Szkoleń IT</span>
+        </div>
+        <a class="btn-link">Szczegóły <span class="material-icons">chevron_right</span></a>
+      </div>
+      <div class="offer-row">
+        <div class="offer-info">
+          <h5>Płatny Staż w Dziale Rozwoju Biznesu</h5>
+          <span>Katowice · Dział Rozwoju Biznesu</span>
+        </div>
+        <a class="btn-link">Szczegóły <span class="material-icons">chevron_right</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TIMELINE — INLINE ─── -->
+<section class="timeline-inline">
+  <div class="header">
+    <h2>Jak wygląda proces rekrutacyjny?</h2>
+    <p>Trzy proste kroki dzielą Cię od startu w DAGMA Talent Lab.</p>
+  </div>
+  <div class="process-row">
+    <div class="process-step">
+      <div class="dot"><span class="material-icons">send</span></div>
+      <h4>Aplikujesz</h4>
+      <p>Wyślij swoją aplikację i czekaj na kontakt.</p>
+    </div>
+    <div class="process-step">
+      <div class="dot"><span class="material-icons">groups</span></div>
+      <h4>Spotykasz się z nami</h4>
+      <p>W biurze lub zdalnie — poznajemy się wzajemnie.</p>
+    </div>
+    <div class="process-step">
+      <div class="dot"><span class="material-icons">thumb_up</span></div>
+      <h4>Dostajesz decyzję</h4>
+      <p>Informujemy Cię o wyniku niezależnie od decyzji.</p>
+    </div>
+  </div>
+  <div class="date-strip">
+    <span class="material-icons">event</span>
+    <strong>1 lipca — 30 września</strong>
+    <span>·</span>
+    <span>Wakacje to idealny czas na Twój start!</span>
+  </div>
+</section>
+
+<!-- ─── BENEFITY ─── -->
+<section class="benefits-compact">
+  <div class="inner">
+    <div class="left">
+      <h2>W DAGMA Talent Lab możesz liczyć na:</h2>
+      <p>Zapewniamy warunki do realnego rozwoju — nie tylko obserwowania.</p>
+    </div>
+    <div class="benefits-list">
+      <div class="b-item"><span class="material-icons">check_circle</span><span>Pełne wdrożenie stanowiskowe</span></div>
+      <div class="b-item"><span class="material-icons">check_circle</span><span>Wsparcie mentora i ekspertów</span></div>
+      <div class="b-item"><span class="material-icons">check_circle</span><span>Nauka na ciekawych projektach</span></div>
+      <div class="b-item"><span class="material-icons">check_circle</span><span>Indywidualne podejście</span></div>
+      <div class="b-item"><span class="material-icons">check_circle</span><span>Rozwój umiejętności</span></div>
+      <div class="b-item"><span class="material-icons">check_circle</span><span>Networking i kontakty</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRAKTYKI CTA ─── -->
+<section class="practices-band">
+  <div class="practices-card">
+    <div class="text-side">
+      <div class="eyebrow">To jeszcze nie czas na staż?</div>
+      <h2>Przyjdź do nas na <span>praktyki!</span></h2>
+      <p>Prowadzimy rekrutacje na praktyki dostępne przez cały rok. Wystarczy przesłać swoją aplikację — skontaktujemy się z Tobą, gdy pojawi się możliwość dopasowania praktyk do Twojego profilu.</p>
+    </div>
+    <div class="cta-side">
+      <a href="#" class="btn-primary">Aplikuj na praktyki</a>
+      <span class="cta-hint">Formularz eRecruiter</span>
+    </div>
+  </div>
+</section>
+
+<script>
+function switchTab(tab) {
+  // Toggle content
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.getElementById('tab-' + tab).style.display = 'grid';
+
+  // Toggle active button
+  document.querySelectorAll('.tab-bar button').forEach(btn => {
+    btn.classList.remove('active', 'active-biz');
+  });
+  const activeBtn = document.querySelector('.tab-bar button[data-tab="' + tab + '"]');
+  activeBtn.classList.add(tab === 'biz' ? 'active-biz' : 'active');
+}
+</script>
+</body>
+</html>
